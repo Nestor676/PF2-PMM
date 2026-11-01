@@ -59,19 +59,39 @@ class _PersonalScreenState extends State<PersonalScreen> {
                 const Text('Modificar Perfil: ', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
 
                 const SizedBox(height: 16),
-                  TextFormField(controller: nameController, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Nombre Completo', border: OutlineInputBorder()),),
+                  TextFormField(controller: nameController,validator: (value){
+                    if(value == null || value.trim().isEmpty){
+                      return 'El nombre es obligatorio';
+                    }
+                  } ,textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Nombre Completo', border: OutlineInputBorder()),),
 
                 const SizedBox(height: 16),
-                  TextFormField(controller: lastNameController, decoration: const InputDecoration(labelText: 'Apellidos', border: OutlineInputBorder()),),
+                  TextFormField(controller: lastNameController,validator: (value) {
+                    if(value == null || value.trim().isEmpty){
+                      return 'Los apellidos son obligatorios';
+                    }
+                  } ,decoration: const InputDecoration(labelText: 'Apellidos', border: OutlineInputBorder()),),
 
                 const SizedBox(height: 16),
-                  TextFormField(controller: emailController, keyboardType: TextInputType.emailAddress, decoration: const InputDecoration(labelText: 'Email', border: OutlineInputBorder()),),
+                  TextFormField(controller: emailController,validator: (value) {
+                    if(value == null || value.trim().isEmpty){
+                      return 'El email es obligatorio';
+                    }
+                  }, keyboardType: TextInputType.emailAddress, decoration: const InputDecoration(labelText: 'Email', border: OutlineInputBorder()),),
                 
                 const SizedBox(height: 16),
-                  TextFormField(controller: passwordController, obscureText: true, decoration: const InputDecoration(labelText: 'Password', border: OutlineInputBorder()),),
+                  TextFormField(controller: passwordController, validator: (value) {
+                    if(value == null || value.trim().isEmpty){
+                      return 'La constraseña es obligatoria';
+                    }
+                  }, obscureText: true, decoration: const InputDecoration(labelText: 'Password', border: OutlineInputBorder()),),
 
                 const SizedBox(height: 16),
-                TextFormField(controller: birthController, 
+                TextFormField(controller: birthController, validator: (value) {
+                    if(value == null || value.trim().isEmpty){
+                      return 'El fechan de nacimiento es obligatoria';
+                    }
+                  },
                   readOnly: true, 
                   decoration: 
                   const InputDecoration(
@@ -85,18 +105,14 @@ class _PersonalScreenState extends State<PersonalScreen> {
                 ),
 
                 const SizedBox(height: 20),
-                  ElevatedButton(onPressed: () {Navigator.popAndPushNamed(context, "/");}, child: Text("Guardar y salir")),
+                  ElevatedButton(onPressed: () {
+                    Navigator.popAndPushNamed(context, "/");
+                  }, child: Text("Guardar y salir")),
               ],
             ),
           ),
         ),
       ),
     );
-  }
-
-  bool _validarName(){
-    if(nameController.text != null){
-      return true;
-    }
   }
 }
