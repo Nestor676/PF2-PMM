@@ -1,17 +1,25 @@
 class Persona{
-  String fullName;
+  String name;
+  String lastName;
   String email;
   DateTime birth;
+  String? password;
 
-  Persona.new({
-    required String fullName,
+  Persona({
+    required String name,
+    required String lastName,
     required String email,
-    required DateTime birth}):
-    this.fullName = fullName,
+    required DateTime birth,
+    String? password }):
+    this.name = name,
+    this.lastName = lastName,
     this.email = email,
-    this.birth = birth;
+    this.birth = birth,
+    this.password = password;
 
-    String get getFullName => fullName;
+    String get getName => name;
+    String get getLastName => lastName;
     String get getEmail => email;
     DateTime get getBirth => birth;
+    String? get getPassword => password;
 }

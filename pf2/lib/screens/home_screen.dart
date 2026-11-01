@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Persona persona = Persona(fullName: "Nestor Schierse Galey", email: "nestor@gmail.com", birth: DateTime(2007, 08, 14));
+  Persona persona = Persona(name: "Nestor",lastName: "Schierse Galey", email: "nestor@gmail.com", birth: DateTime(2007, 08, 14));
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Text('Perfil personal', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
 
                 const SizedBox(height: 16),
-                  Text('Nombre completo: ' + persona.getFullName),
+                  Text('Nombre completo: ' + persona.getName + " " +persona.getLastName),
                 const SizedBox(height: 8),
                 Text('Email: ' + persona.getEmail),  
                 const SizedBox(height: 9),
