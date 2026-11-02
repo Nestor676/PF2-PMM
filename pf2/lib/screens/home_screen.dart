@@ -36,7 +36,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text('Fecha de nacimiento: ' + persona.birth.day.toString() + '/' + persona.birth.month.toString() + '/' + persona.birth.year.toString()),
 
                 const SizedBox(height: 20,),
-                  ElevatedButton(onPressed: () {Navigator.pushNamed(context, "/personal", arguments: persona); }, child: Text('Editar perfil')),
+                ElevatedButton(onPressed: () async {final resultado = await Navigator.pushNamed(context, "/personal", arguments: persona);
+                  if(resultado != null){
+                    setState(() {
+                      persona = resultado as Persona;
+                    });
+                  }
+                }, child: Text('Editar perfil')),
               ],
             ),
           ),
