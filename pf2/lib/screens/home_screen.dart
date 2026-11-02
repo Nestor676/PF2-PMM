@@ -43,6 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   }
                 }, child: Text('Editar perfil')),
+
+                const SizedBox(height: 20,),
+                ElevatedButton(onPressed: () {Navigator.pushNamed(context, "/widget");}, child: Text('Explora los Widgets Showcase')),
               ],
             ),
           ),
